@@ -28,7 +28,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Link</a></li>
+                        <li><a href="{{ path('login') }}">Logar</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -36,8 +36,9 @@
 
         <div class="col-md-3 list-group table-responsive">
             <a href="{{ path('cms_homepage') }}" class="list-group-item">Home</a>
-            <a href="{{ path('cms_person_new') }}" class="list-group-item">Adicionar Pessoa</a>
-            <a href="{{ path('cms_person_index') }}" class="list-group-item">Listar Pessoas</a>
+
+            {% block menu %}
+            {% endblock %}
 
         </div>
         {% block body %}

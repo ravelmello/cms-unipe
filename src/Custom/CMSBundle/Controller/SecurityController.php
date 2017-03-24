@@ -4,32 +4,27 @@ namespace Custom\CMSBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Security;
+
 
 class SecurityController extends Controller
 {
-    public function loginAction(Request $request) {
-        $session = $request->getSession();
+    public function loginAction(Request $request)
+    {
+        $authenticationUtils = $this->get('security.authentication_utils');
 
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
 
-        if($request->attributes->has(Security::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(
-                Security::AUTHENTICATION_ERROR
-            );
-        } elseif (null != $session && $session->has(Security::AUTHENTICATION_ERROR)) {
-            $error = $session->has(Security::AUTHENTICATION_ERROR);
-            $session->remove(Security::AUTHENTICATION_ERROR);
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        } else {
-            $error = 'Aqui foi errado!';
-        }
+        return $this->render('@CMS/Security/login.html.twig', array(
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ));
 
-        return $this->render(
-            'CMSBundle:Security:login.html.twig',
-            array(
-                'error' =>$error
-            )
-        );
     }
+
+
 
 }
