@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-md-9">
+        <fieldset>Person</fieldset>
+
+        <table id="myTable" class="table table-responsive dataTable" cellspacing="0" width="100%">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>BirthDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{ person.id }}</th>
+                    <th>{{ person.personName }}</th>
+                    <th>{{ person.username }}</th>
+                    <th>{% if person.personBirthDate %}{{ person.personBirthDate|date('d-m-Y') }}{% endif %}</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col-md-9">
+            <a class="btn btn-default" href="{{ path('cms_person_index') }}">Back to the list</a>
+            <a class="btn btn-primary" href="{{ path('cms_person_edit', { 'id': person.id }) }}">Edit</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    } );
+</script>
+{% endblock %}

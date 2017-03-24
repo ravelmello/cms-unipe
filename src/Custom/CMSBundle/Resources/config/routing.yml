@@ -1,0 +1,18 @@
+cms_person:
+    resource: "@CMSBundle/Resources/config/routing/person.yml"
+    prefix:   /cms/person
+
+cms_homepage:
+    path:     /
+    defaults: { _controller: CMSBundle:Default:index }
+
+login:
+    path: /login
+    defaults: { _controller: CMSBundle:Security:login }
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+

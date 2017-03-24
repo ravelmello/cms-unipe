@@ -1,0 +1,29 @@
+Custom\CMSBundle\Entity\Person:
+    type: entity
+    table: null
+    repositoryClass: Custom\CMSBundle\Repository\PersonRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        personName:
+            type: string
+            length: 255
+            unique: true
+            column: person_name
+        personBirthDate:
+            type: datetime
+            column: person_birth_date
+        personUsername:
+            type: string
+            unique: true
+            length: '30'
+            column: person_username
+        personPassword:
+            type: string
+            length: '64'
+            column: person_password
+    lifecycleCallbacks: {  }

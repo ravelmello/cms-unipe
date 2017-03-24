@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="col-md-9">
+        <h1>Person edit</h1>
+
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <div class="">
+            <a class="btn btn-default" href="{{ path('cms_person_index') }}">Back to the list</a>
+            {{ form_end(edit_form) }}
+            <input class="btn btn-primary"  type="submit" value="Edit" />
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </div>
+
+    </div>
+
+{% endblock %}
