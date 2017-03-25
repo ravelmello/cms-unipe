@@ -30,5 +30,7 @@ security:
             anonymous: true
     access_control:
         - { path: /login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /cms/person, roles: ROLE_ADMIN }
+        - { path: /cms/person, roles: ROLE_USER }
+
+
 

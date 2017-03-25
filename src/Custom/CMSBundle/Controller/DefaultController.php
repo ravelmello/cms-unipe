@@ -8,6 +8,14 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CMSBundle:Default:index.html.twig');
+
+        $userName = $this->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render(
+            'CMSBundle:Default:index.html.twig',
+            array(
+                'username' => $userName
+            )
+        );
     }
 }

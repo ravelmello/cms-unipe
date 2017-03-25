@@ -1,5 +1,19 @@
 {% extends '::base.html.twig' %}
 
+{% block menu %}
+{% endblock %}
+
+{% block login %}
+    <ul class="nav navbar-nav navbar-right">
+        {% if username != 'anon.' %}
+            <li>Logado como, {{ username.personUserName }} <a href="{{ path('logout') }}">Logout</a> </li>
+        {% endif %}
+        {% if username =='anon.' %}
+            <li><a href="{{ path('login') }}">Logar</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
 {% block body %}
     <div class="col-md-9">
         <div class="jumbotron">
